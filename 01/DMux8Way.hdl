@@ -16,7 +16,6 @@ CHIP DMux8Way {
     OUT a, b, c, d, e, f, g, h;
 
     PARTS:
-    // copied
     Not(in=sel[0], out=notsel0);
 	Not(in=sel[1], out=notsel1);
 	Not(in=sel[2], out=notsel2);
