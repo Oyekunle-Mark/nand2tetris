@@ -1,3 +1,3 @@
 # nand2tetris
 
-Building a computer from first principle.
+Building a modern computer from first principle.
