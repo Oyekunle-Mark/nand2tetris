@@ -7,7 +7,7 @@ The Nand to Tetris experience entails building a general-purpose computer system
 
 This repository contains the individual projects combined to produce the general purpose computer system.
 
-Each chapter of the book can be found by folder name, as follows:
+Each completed chapter of the book can be found by folder name, as follows:
 
 * Project 01: Boolean Logic
 * Project 02: Boolean Arithmetic
