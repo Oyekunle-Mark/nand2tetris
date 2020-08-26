@@ -8,33 +8,33 @@
 
 // Put your code here.
     @2
-    M=0
+    M=0     // set R2 to zero
     @0
     D=M
     @END
-    D;JEQ
+    D;JEQ   // end if R0 is zero
     @1
     D=M
     @END
-    D;JEQ
+    D;JEQ   // end if R1 is zero
     @0
     D=M
     @2
     M=D
     @size
-    M=D
+    M=D     // set size to R0
 (LOOP)
     @1
-    M=M-1
+    M=M-1   // decrement R1
     D=M
     @END
-    D;JEQ
+    D;JEQ   // end if R1 is zero
     @size
     D=M
     @2
-    M=M+D
+    M=M+D   // perform R1 + size
     @LOOP
-    0;JMP
+    0;JMP   // run another iteration
 (END)
     @END
     0;JMP
