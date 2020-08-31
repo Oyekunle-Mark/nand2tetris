@@ -28,7 +28,7 @@
     D;JEQ
     @screenIndex
     D=M + 1
-    A=D
+    A=D-1
     M=-1    // turn it all black
     @screenIndex
     M=D
