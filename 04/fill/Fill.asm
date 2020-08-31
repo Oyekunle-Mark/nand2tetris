@@ -24,13 +24,31 @@
 (BLACK)
     @24575
     D=D-A   // check if all the screen memory map has been written to
-    @START
-    D;JEQ
+    @WHITE
+    D;JEQ   // jump to whiten the screen
     @screenIndex
-    D=M + 1
-    A=D-1
-    M=-1    // turn it all black
+    D=M
+    A=D
+    M=-1    // turn the current register black
     @screenIndex
-    M=D
+    M=D+1   // increment the screen index
     @BLACK
     0;JMP
+(WHITE)
+    @16384
+    D=A
+    @screenIndex
+    M=D     // set screen index to the start of screen chip
+    (LOOP)
+        @24575
+        D=D-A   // check if all the screen memory map has been written whiten
+        @START
+        D;JEQ
+        @screenIndex
+        D=M
+        A=D
+        M=0    // turn it the current register white
+        @screenIndex
+        M=D+1   // increment the screen index
+        @LOOP
+        0;JMP
