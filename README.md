@@ -12,8 +12,8 @@ Each completed chapter of the book can be found by folder name, as follows:
 * Project 01: Boolean Logic
 * Project 02: Boolean Arithmetic
 * Project 03: Sequential Logic   
-<!-- * Project 04: Machine Language 
-* Project 05: Computer Architecture  
+* Project 04: Machine Language 
+<!-- * Project 05: Computer Architecture  
 * Project 06: Assembler   
 * Project 07: Virtual Machine I: Stack Arithmetic   
 * Project 08: Virtual Machine II: Program Control   
