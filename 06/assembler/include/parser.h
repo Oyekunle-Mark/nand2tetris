@@ -7,12 +7,7 @@
 
 #include <string>
 #include <fstream>
-
-enum class Commandtype {
-    A_COMMAND,
-    C_COMMAND,
-    L_COMMAND
-};
+#include "types.h"
 
 class Parser {
 public:
@@ -26,7 +21,7 @@ public:
 
     void advance();
 
-    Commandtype commandType() const;
+    types::Commandtype commandType() const;
 
     const std::string symbol() const;
 
