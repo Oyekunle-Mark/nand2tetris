@@ -24,9 +24,9 @@ public:
     const std::string jump(const std::string &) const;
 
 private:
-    std::unique_ptr<std::map<std::string, std::string>> destTable{};
-    std::unique_ptr<std::map<std::string, std::string>> compTable{};
-    std::unique_ptr<std::map<std::string, std::string>> jumpTable{};
+    const std::unique_ptr<types::DestTable> destTable;
+    const std::unique_ptr<types::CompTable> compTable;
+    const std::unique_ptr<types::JumpTable> jumpTable;
 };
 
 #endif //ASSEMBLER_CODE_H
