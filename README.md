@@ -21,3 +21,6 @@ Each completed chapter of the book can be found by folder name, as follows:
 * Project 10: Compiler I: Syntax Analysis   
 * Project 11: Compiler II: Code Generation   
 * Project 12: Operating System  -->
+
+## Author
+*Oyekunle Oloyede*
