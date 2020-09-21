@@ -33,3 +33,6 @@
 
 # vs code files
 .DS_Store
+
+.idea/
+cmake-build-debug/
