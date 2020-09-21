@@ -3,4 +3,4 @@ project(assembler)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(assembler main.cpp)
+add_executable(assembler main.cpp code.cpp code.h)
