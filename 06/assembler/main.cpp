@@ -1,6 +1,9 @@
 #include <iostream>
+#include "code.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Code c{};
+
+    std::cout << c.dest("null") + c.comp("M") << std::endl;
     return 0;
 }
