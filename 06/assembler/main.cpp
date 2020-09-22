@@ -1,9 +1,11 @@
 #include <iostream>
 #include "code.h"
 
-int main() {
-    Code c{};
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        std::cout << "Expects a file as the only command line argument";
+        std::exit(1);
+    }
 
-    std::cout << c.dest("null") + c.comp("M") << std::endl;
     return 0;
 }
