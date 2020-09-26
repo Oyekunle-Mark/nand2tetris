@@ -24,12 +24,14 @@ void Parser::advance() {
 }
 
 types::CommandType Parser::commandType() {
+    // find comment in the present command
     const std::string::size_type commentSignIndex{currentCommand.find("//")};
 
     if (commentSignIndex != std::string::npos)
+        // strip the comment
         currentCommand = currentCommand.substr(0, commentSignIndex);
 
-    currentCommand = stripLine(currentCommand);
+    currentCommand = stripLine(currentCommand); // remove all spaces, tabs, etc
 
     if (currentCommand.empty())
         return types::CommandType::COMMENT;
