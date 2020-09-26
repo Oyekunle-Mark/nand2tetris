@@ -31,8 +31,6 @@ public:
 
     const std::string jump() const;
 
-    bool isLegitCommand();
-
 private:
     std::ifstream fileStream;
     std::string currentCommand{};

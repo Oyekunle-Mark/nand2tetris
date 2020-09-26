@@ -12,9 +12,9 @@ int main(int argc, char *argv[]) {
 //    Parser testParser{argv[1]};
 
     std::string command{"Helpj=jbj//o world"};
-    std::cout << command.find("//");
+//    std::cout << command.find("//");
     command = command.substr(0,command.find("//"));
-    std::cout << command.substr(1, command.find('=') - 1) << command.find('p');
+    std::cout << command.substr(command.find('=') + 1);
 
     return 0;
 }
