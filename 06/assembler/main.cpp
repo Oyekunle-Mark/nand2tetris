@@ -12,6 +12,12 @@ int main(int argc, char *argv[]) {
     Parser parser{argv[1]};
     Code code{};
 
+    std::ofstream outputFile{"Prog.hack"};
+
+    if (!outputFile) {
+        throw std::runtime_error("Error: cannot open Prog.hack file!");
+    }
+
     while (parser.hasMoreCommands()) {
         parser.advance();
         auto instructionType = parser.commandType();
@@ -24,8 +30,10 @@ int main(int argc, char *argv[]) {
         else if (instructionType == types::CommandType::C_COMMAND)
             output = code.generateInstruction(parser.comp(), parser.dest(), parser.jump());
 
-        std::cout << output << '\n';
+        outputFile << output << '\n';
     }
+
+    outputFile.close();
 
     return 0;
 }
