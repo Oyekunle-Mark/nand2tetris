@@ -42,7 +42,10 @@ types::CommandType Parser::commandType() {
 }
 
 const std::string Parser::symbol() const {
+    if (currentCommand.starts_with("@"))
+        return currentCommand.substr(1);
 
+    return currentCommand.substr(1, currentCommand.find(')') - 1);
 }
 
 std::string stripLine(const std::string &line) {

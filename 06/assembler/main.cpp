@@ -11,9 +11,10 @@ int main(int argc, char *argv[]) {
 //
 //    Parser testParser{argv[1]};
 
-    std::string command{" Hell//o world"};
-    command = command.substr(command.find("//"));
-    std::cout << command;
+    std::string command{" Helpjjbj//o world"};
+    std::cout << command.find("//");
+    command = command.substr(0,command.find("//"));
+    std::cout << command.substr(1, command.find("p")) << command.find('p');
 
     return 0;
 }
