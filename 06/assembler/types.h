@@ -9,10 +9,11 @@
 #include <string>
 
 namespace types {
-    enum class Commandtype {
+    enum class CommandType {
         A_COMMAND,
         C_COMMAND,
-        L_COMMAND
+        L_COMMAND,
+        COMMENT
     };
 
     struct DestTable {

@@ -21,7 +21,7 @@ public:
 
     void advance();
 
-    types::Commandtype commandType() const;
+    types::CommandType commandType() const;
 
     const std::string symbol() const;
 
