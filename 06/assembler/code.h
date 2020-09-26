@@ -24,7 +24,7 @@ public:
     const std::string jump(const std::string &) const;
 
     const std::string
-    generateInstruction(const std::string &destV, const std::string &compV, const std::string &jumpV) const;
+    generateInstruction(const std::string &compV, const std::string &destV, const std::string &jumpV) const;
 
 private:
     static const std::string prefix;

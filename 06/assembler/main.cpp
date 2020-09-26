@@ -12,15 +12,18 @@ int main(int argc, char *argv[]) {
     Parser parser{argv[1]};
     Code code{};
 
-    while(parser.hasMoreCommands()) {
+    while (parser.hasMoreCommands()) {
         parser.advance();
         auto instructionType = parser.commandType();
         std::string output{};
 
         if (instructionType == types::CommandType::COMMENT)
             continue;
-        else if (instructionType == types::CommandType::C_COMMAND) {
+        else if (instructionType == types::CommandType::A_COMMAND) {
 //            output =
+        }
+        else if (instructionType == types::CommandType::C_COMMAND) {
+            output = code.generateInstruction(parser.comp(), parser.dest(), parser.jump());
         }
     }
 
