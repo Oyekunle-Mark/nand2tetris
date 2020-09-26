@@ -19,12 +19,12 @@ int main(int argc, char *argv[]) {
 
         if (instructionType == types::CommandType::COMMENT)
             continue;
-        else if (instructionType == types::CommandType::A_COMMAND) {
-//            output =
-        }
-        else if (instructionType == types::CommandType::C_COMMAND) {
+        else if (instructionType == types::CommandType::A_COMMAND)
+            output += "0" + std::bitset<15>(std::stoi(parser.symbol())).to_string();
+        else if (instructionType == types::CommandType::C_COMMAND)
             output = code.generateInstruction(parser.comp(), parser.dest(), parser.jump());
-        }
+
+        std::cout << output << '\n';
     }
 
     return 0;
