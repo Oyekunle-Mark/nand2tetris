@@ -9,6 +9,8 @@ Code::Code()
           compTable{std::make_unique<types::CompTable>()},
           jumpTable{std::make_unique<types::JumpTable>()} {}
 
+const std::string Code::prefix = "111";
+
 const std::string Code::dest(const std::string &key) const {
     return destTable->table.at(key);
 }

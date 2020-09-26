@@ -27,7 +27,7 @@ public:
     generateInstruction(const std::string &destV, const std::string &compV, const std::string &jumpV) const;
 
 private:
-    const std::string prefix{"111"};
+    static const std::string prefix;
     const std::unique_ptr<types::DestTable> destTable;
     const std::unique_ptr<types::CompTable> compTable;
     const std::unique_ptr<types::JumpTable> jumpTable;
