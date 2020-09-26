@@ -11,7 +11,7 @@
 
 class Parser {
 public:
-    Parser(const std::string &fileName);
+    explicit Parser(const char *fileName);
 
     Parser(const Parser &) = delete;
 

@@ -8,7 +8,7 @@
 
 std::string stripLine(const std::string &);
 
-Parser::Parser(const std::string &fileName)
+Parser::Parser(const char *fileName)
         : fileStream{fileName} {
     if (!fileStream) {
         throw std::runtime_error("Cannot open file!");
