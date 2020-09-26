@@ -3,6 +3,7 @@
 //
 
 #include "code.h"
+#include <iostream>
 
 Code::Code()
         : destTable{std::make_unique<types::DestTable>()},
@@ -12,14 +13,17 @@ Code::Code()
 const std::string Code::prefix = "111";
 
 const std::string Code::dest(const std::string &key) const {
+    std::cout << "*** dest: " << key << '\n';
     return destTable->table.at(key);
 }
 
 const std::string Code::comp(const std::string &key) const {
+    std::cout << "*** comp: " << key << '\n';
     return compTable->table.at(key);
 }
 
 const std::string Code::jump(const std::string &key) const {
+    std::cout << "*** jump: " << key << '\n';
     return jumpTable->table.at(key);
 }
 

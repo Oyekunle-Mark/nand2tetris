@@ -54,7 +54,7 @@ const std::string Parser::dest() const {
     if (equalSignIndex == std::string::npos)
         return std::string{"null"};
 
-    return currentCommand.substr(0, equalSignIndex - 1);
+    return currentCommand.substr(0, equalSignIndex);
 }
 
 const std::string Parser::jump() const {
@@ -73,7 +73,7 @@ const std::string Parser::comp() const {
         return currentCommand.substr(equalSignIndex + 1);
 
     const std::string::size_type semiColonIndex = currentCommand.find(';');
-    return currentCommand.substr(0, semiColonIndex - 1);
+    return currentCommand.substr(0, semiColonIndex);
 }
 
 std::string stripLine(const std::string &line) {
