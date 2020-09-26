@@ -17,7 +17,7 @@ public:
 
     Parser &operator=(const Parser &) = delete;
 
-    bool hasMoreCommands() const;
+    bool hasMoreCommands();
 
     void advance();
 

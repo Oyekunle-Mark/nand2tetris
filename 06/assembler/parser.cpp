@@ -11,3 +11,12 @@ Parser::Parser(const std::string &fileName)
         throw std::runtime_error("Cannot open file!");
     }
 }
+
+bool Parser::hasMoreCommands() {
+    return fileStream.peek() != EOF;
+}
+
+void Parser::advance() {
+    if (hasMoreCommands())
+        std::getline(fileStream, currentCommand);
+}
