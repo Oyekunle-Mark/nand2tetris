@@ -9,7 +9,20 @@ int main(int argc, char *argv[]) {
         std::exit(1);
     }
 
-    Parser testParser{argv[1]};
+    Parser parser{argv[1]};
+    Code code{};
+
+    while(parser.hasMoreCommands()) {
+        parser.advance();
+        auto instructionType = parser.commandType();
+        std::string output{};
+
+        if (instructionType == types::CommandType::COMMENT)
+            continue;
+        else if (instructionType == types::CommandType::C_COMMAND) {
+//            output =
+        }
+    }
 
     return 0;
 }

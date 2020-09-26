@@ -23,7 +23,11 @@ public:
 
     const std::string jump(const std::string &) const;
 
+    const std::string
+    generateInstruction(const std::string &destV, const std::string &compV, const std::string &jumpV) const;
+
 private:
+    const std::string prefix{"111"};
     const std::unique_ptr<types::DestTable> destTable;
     const std::unique_ptr<types::CompTable> compTable;
     const std::unique_ptr<types::JumpTable> jumpTable;
