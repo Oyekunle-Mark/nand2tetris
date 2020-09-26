@@ -66,6 +66,16 @@ const std::string Parser::jump() const {
     return currentCommand.substr(semiColonIndex + 1);
 }
 
+const std::string Parser::comp() const {
+    const std::string::size_type equalSignIndex = currentCommand.find('=');
+
+    if (equalSignIndex != std::string::npos)
+        return currentCommand.substr(equalSignIndex + 1);
+
+    const std::string::size_type semiColonIndex = currentCommand.find(';');
+    return currentCommand.substr(0, semiColonIndex - 1);
+}
+
 std::string stripLine(const std::string &line) {
     std::string result{};
 
