@@ -3,7 +3,10 @@
 //
 
 #include <stdexcept>
+#include <cctype>
 #include "parser.h"
+
+std::string stripLine(const std::string &);
 
 Parser::Parser(const std::string &fileName)
         : fileStream{fileName} {
@@ -20,21 +23,35 @@ void Parser::advance() {
     std::getline(fileStream, currentCommand);
 }
 
-types::CommandType Parser::commandType() const {
+types::CommandType Parser::commandType() {
     const std::string::size_type commentSignIndex{currentCommand.find("//")};
-    std::string strippedCommand{};
 
     if (commentSignIndex != std::string::npos)
-        strippedCommand = currentCommand.substr(0, commentSignIndex);
-    else
-        strippedCommand = currentCommand;
+        currentCommand = currentCommand.substr(0, commentSignIndex);
 
-    if (strippedCommand.empty())
+    currentCommand = stripLine(currentCommand);
+
+    if (currentCommand.empty())
         return types::CommandType::COMMENT;
-    else if (strippedCommand.starts_with("@"))
+    else if (currentCommand.starts_with("@"))
         return types::CommandType::A_COMMAND;
-    else if (strippedCommand.starts_with("("))
+    else if (currentCommand.starts_with("("))
         return types::CommandType::L_COMMAND;
     else
         return types::CommandType::C_COMMAND;
+}
+
+const std::string Parser::symbol() const {
+
+}
+
+std::string stripLine(const std::string &line) {
+    std::string result{};
+
+    for (auto const &c: line) {
+        if (!std::isspace(c))
+            result += c;
+    }
+
+    return result;
 }
