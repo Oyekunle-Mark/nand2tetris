@@ -48,6 +48,15 @@ const std::string Parser::symbol() const {
     return currentCommand.substr(1, currentCommand.find(')') - 1);
 }
 
+const std::string Parser::dest() const {
+    const std::string::size_type equalSignIndex = currentCommand.find('=');
+
+    if (equalSignIndex == std::string::npos)
+        return std::string{"null"};
+
+    return currentCommand.substr(0, equalSignIndex - 1);
+}
+
 std::string stripLine(const std::string &line) {
     std::string result{};
 
