@@ -60,8 +60,7 @@ void buildLabels(const char *fileName, SymbolTable &sTable) {
 
         if (instructionType == types::CommandType::C_COMMAND || instructionType == types::CommandType::A_COMMAND)
             ++position;
-        else if (instructionType == types::CommandType::L_COMMAND) {
-//            sTable.addEntry(parser.symbol(), static_cast<std::string>(position));
-        }
+        else if (instructionType == types::CommandType::L_COMMAND)
+            sTable.addEntry(parser.symbol(), position);
     }
 }
