@@ -7,6 +7,8 @@ const std::string convertToBinary(const std::string &);
 
 void buildLabels(const char *, SymbolTable &);
 
+bool isNumeric(const std::string &);
+
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         std::cout << "Expects a file as the only command line argument\n"
@@ -26,16 +28,34 @@ int main(int argc, char *argv[]) {
         throw std::runtime_error("Error: cannot open Prog.hack file!");
     }
 
+    std::size_t ramVariableAddress{16};
+
     while (parser.hasMoreCommands()) {
         parser.advance();
         auto instructionType = parser.commandType();
         std::string output{};
 
-        if (instructionType == types::CommandType::COMMENT)
+        if (instructionType == types::CommandType::COMMENT || instructionType == types::CommandType::L_COMMAND)
             continue;
-        else if (instructionType == types::CommandType::A_COMMAND)
-            output = convertToBinary(parser.symbol());
-        else if (instructionType == types::CommandType::C_COMMAND)
+        else if (instructionType == types::CommandType::A_COMMAND) {
+            const auto currentSymbol{parser.symbol()};
+
+            if (isNumeric(currentSymbol))
+                output = convertToBinary(parser.symbol());
+            else {
+                std::size_t address{};
+
+                if (sTable.contains(currentSymbol))
+                    address = sTable.getAddress(currentSymbol);
+                else {
+                    sTable.addEntry(currentSymbol, ramVariableAddress);
+                    address = ramVariableAddress;
+                    ++ramVariableAddress;
+                }
+
+                output = convertToBinary(std::to_string(address));
+            }
+        } else if (instructionType == types::CommandType::C_COMMAND)
             output = code.generateInstruction(parser.comp(), parser.dest(), parser.jump());
 
         outputFile << output << '\n';
@@ -63,4 +83,9 @@ void buildLabels(const char *fileName, SymbolTable &sTable) {
         else if (instructionType == types::CommandType::L_COMMAND)
             sTable.addEntry(parser.symbol(), position);
     }
+}
+
+bool isNumeric(const std::string &symbol) {
+    return !symbol.empty() &&
+           std::find_if(symbol.begin(), symbol.end(), [](unsigned char c) { return !std::isdigit(c); }) == symbol.end();
 }
