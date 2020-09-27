@@ -79,7 +79,7 @@ namespace types {
     };
 
     struct SymTable {
-        const std::map<std::string, std::string> table{
+        std::map<std::string, std::string> table{
                 {"R0",     "0"},
                 {"R1",     "1"},
                 {"R2",     "2"},
