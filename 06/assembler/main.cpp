@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 
     while (parser.hasMoreCommands()) {
         parser.advance();
-        auto instructionType = parser.commandType();
+        const auto instructionType = parser.commandType();
         std::string output{};
 
         if (instructionType == types::CommandType::COMMENT || instructionType == types::CommandType::L_COMMAND)
