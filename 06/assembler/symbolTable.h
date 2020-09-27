@@ -12,11 +12,11 @@ class SymbolTable {
 public:
     SymbolTable();
 
-    void addEntry(const std::string &symbol, const std::string &address);
+    void addEntry(const std::string &symbol, const std::size_t address);
 
     bool contains(const std::string &symbol) const;
 
-    std::string getAddress(const std::string &symbol) const;
+    std::size_t getAddress(const std::string &symbol) const;
 
 private:
     const std::unique_ptr<types::SymTable> symTable;
