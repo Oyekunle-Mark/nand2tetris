@@ -5,9 +5,21 @@
 #ifndef ASSEMBLER_SYMBOLTABLE_H
 #define ASSEMBLER_SYMBOLTABLE_H
 
+#include <memory>
+#include "types.h"
 
 class SymbolTable {
+public:
+    SymbolTable();
 
+    void addEntry(const std::string &symbol, const std::string &address);
+
+    bool contains(const std::string &symbol) const;
+
+    std::string getAddress(const std::string &symbol) const;
+
+private:
+    const std::unique_ptr<types::SymTable> symTable;
 };
 
 
