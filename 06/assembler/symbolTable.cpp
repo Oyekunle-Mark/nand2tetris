@@ -14,3 +14,7 @@ void SymbolTable::addEntry(const std::string &symbol, const std::string &address
 bool SymbolTable::contains(const std::string &symbol) const {
     return symTable->table.count(symbol);
 }
+
+std::string SymbolTable::getAddress(const std::string &symbol) const {
+    return symTable->table.at(symbol);
+}
