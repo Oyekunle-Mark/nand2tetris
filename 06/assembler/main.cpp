@@ -2,6 +2,8 @@
 #include "code.h"
 #include "parser.h"
 
+const std::string convertToBinary(const std::string &);
+
 int main(int argc, char *argv[]) {
     if (argc != 2) {
         std::cout << "Expects a file as the only command line argument\n"
@@ -26,7 +28,7 @@ int main(int argc, char *argv[]) {
         if (instructionType == types::CommandType::COMMENT)
             continue;
         else if (instructionType == types::CommandType::A_COMMAND)
-            output += "0" + std::bitset<15>(std::stoi(parser.symbol())).to_string();
+            output = convertToBinary(parser.symbol());
         else if (instructionType == types::CommandType::C_COMMAND)
             output = code.generateInstruction(parser.comp(), parser.dest(), parser.jump());
 
@@ -36,4 +38,8 @@ int main(int argc, char *argv[]) {
     outputFile.close();
 
     return 0;
+}
+
+const std::string convertToBinary(const std::string &symbol) {
+    return std::bitset<16>(std::stoi(symbol)).to_string();
 }
