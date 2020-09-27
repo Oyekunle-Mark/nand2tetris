@@ -1,8 +1,11 @@
 #include <iostream>
 #include "code.h"
 #include "parser.h"
+#include "symbolTable.h"
 
 const std::string convertToBinary(const std::string &);
+
+void buildLabels(const char *, SymbolTable &);
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
@@ -13,6 +16,9 @@ int main(int argc, char *argv[]) {
 
     Parser parser{argv[1]};
     Code code{};
+    SymbolTable sTable{};
+
+    buildLabels(argv[1], sTable);
 
     std::ofstream outputFile{"Prog.hack"};
 
@@ -42,4 +48,20 @@ int main(int argc, char *argv[]) {
 
 const std::string convertToBinary(const std::string &symbol) {
     return std::bitset<16>(std::stoi(symbol)).to_string();
+}
+
+void buildLabels(const char *fileName, SymbolTable &sTable) {
+    Parser parser{fileName};
+    std::size_t position{};
+
+    while (parser.hasMoreCommands()) {
+        parser.advance();
+        auto instructionType = parser.commandType();
+
+        if (instructionType == types::CommandType::C_COMMAND || instructionType == types::CommandType::A_COMMAND)
+            ++position;
+        else if (instructionType == types::CommandType::L_COMMAND) {
+//            sTable.addEntry(parser.symbol(), static_cast<std::string>(position));
+        }
+    }
 }
